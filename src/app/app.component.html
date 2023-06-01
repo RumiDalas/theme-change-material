@@ -1,4 +1,4 @@
-<div    [ngClass]="{'dark-mode':darkThemeSelected, 'purple': purpleThemeSelected, }"  >
+<div    [ngClass]="{'pink-mode':pinkThemeSelected, 'purple': purpleThemeSelected,'deep-purple': deepPurpleThemeSelected, }"  >
   <!-- [ngClass]="{'dark-mode':darkThemeSelected, 'special-theme': condition2, }"  -->
 
   <mat-toolbar color="primary">
@@ -17,8 +17,9 @@
 
   <mat-menu #themeDropdown="matMenu"  >
     <mat-radio-group aria-label="Select an option" class="flex flex-col" (change)="switchTheme($event)" >
-      <mat-radio-button value="pink">Option 1</mat-radio-button>
-      <mat-radio-button value="2">Option 2</mat-radio-button>
+      <mat-radio-button value="pink">Pink & Blue-grey</mat-radio-button>
+      <mat-radio-button value="purple">Purple & Green</mat-radio-button>
+      <mat-radio-button value="deepPurple">Deep Purple & Amber</mat-radio-button>
     </mat-radio-group>
   </mat-menu>
 

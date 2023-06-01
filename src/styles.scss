@@ -35,13 +35,15 @@ $theme-app-theme: mat.define-light-theme((
 // // that you are using.
 @include mat.all-component-themes($theme-app-theme);
 
-//
 
-$dark-theme: mat.define-dark-theme(
+
+// Pink & Blue-grey theme
+
+$pink-blue-grey-theme: mat.define-dark-theme(
   (
     color: (
-      primary: mat.define-palette(mat.$pink-palette, A200),
-      accent: mat.define-palette(mat.$blue-grey-palette, 300),
+      primary: mat.define-palette(mat.$pink-palette, 700, 500, 900),
+      accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400),
       // warn:
     ),
     typography: mat.define-typography-config(),
@@ -49,35 +51,12 @@ $dark-theme: mat.define-dark-theme(
   )
 );
 
-.dark-mode {
-  @include mat.all-component-colors($dark-theme);
-  // @import "@angular/material/prebuilt-themes/pink-bluegrey.css"
+.pink-mode {
+  @include mat.all-component-colors($pink-blue-grey-theme);
 
 }
 
-
-//
-
-// Define the light theme.
-$primary: mat.define-palette(mat.$deep-purple-palette);
-$accent:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$theme: mat.define-light-theme((
-  color: (
-    primary: $primary,
-    accent: $accent
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
-));
-
-
-
-
-.deep{
-  @include mat.all-component-colors($theme);
-
-}
-
+// purple & green theme
 
 $primary: mat.define-palette(mat.$purple-palette, 700, 500, 800);
 $accent:  mat.define-palette(mat.$green-palette, A200, A100, A400);
@@ -97,12 +76,27 @@ $theme-purple: mat.define-dark-theme((
 }
 
 
-
-
-
 //
 
+// Deep Purple & Amber theme.
+$primary: mat.define-palette(mat.$deep-purple-palette);
+$accent:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
 
+
+
+
+.deep-purple{
+  @include mat.all-component-colors($theme);
+
+}
 
 
 

@@ -7,20 +7,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'theme-app';
-  darkThemeSelected =false ;
+  pinkThemeSelected =false ;
   purpleThemeSelected=false;
+  deepPurpleThemeSelected=false;
 
   switchTheme(event:any) {
-    console.log('called')
+
     console.log(event)
     if(event.value==='pink'){
-      this.darkThemeSelected =true ;
+      this.pinkThemeSelected =true ;
       this.purpleThemeSelected =false ;
-    }else{
-      this.purpleThemeSelected =true ;
-      this.darkThemeSelected =false ;
-
+      this.deepPurpleThemeSelected=false;
     }
+    if(event.value==='purple'){
+      this.purpleThemeSelected =true ;
+      this.pinkThemeSelected =false ;
+      this.deepPurpleThemeSelected=false;
+    }
+
+    if(event.value==='deepPurple'){
+      this.deepPurpleThemeSelected=true;
+      this.purpleThemeSelected =false ;
+      this.pinkThemeSelected =false ;
+    }
+
 
   }
 }

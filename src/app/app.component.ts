@@ -11,21 +11,26 @@ export class AppComponent {
   purpleThemeSelected=false;
   deepPurpleThemeSelected=false;
 
-  switchTheme(event:any) {
 
-    console.log(event)
-    if(event.value==='pink'){
+  switchTheme(event:any) {
+    let theme =event.value ;
+    // localStorage.setItem('userId', 'a');
+    localStorage.setItem('currentTheme', theme);
+    let myTheme = localStorage.getItem('currentTheme');
+    console.log('=======myTheme', myTheme)
+
+    if(event.value==='pink' && myTheme === 'pink'){
       this.pinkThemeSelected =true ;
       this.purpleThemeSelected =false ;
       this.deepPurpleThemeSelected=false;
     }
-    if(event.value==='purple'){
+    if(event.value==='purple' && myTheme === 'purple'){
       this.purpleThemeSelected =true ;
       this.pinkThemeSelected =false ;
       this.deepPurpleThemeSelected=false;
     }
 
-    if(event.value==='deepPurple'){
+    if(event.value==='deepPurple' && myTheme === 'deepPurple'){
       this.deepPurpleThemeSelected=true;
       this.purpleThemeSelected =false ;
       this.pinkThemeSelected =false ;

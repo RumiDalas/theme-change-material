@@ -1,36 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'theme-app';
+  defaultThemeSelected=true;
   pinkThemeSelected =false ;
   purpleThemeSelected=false;
   deepPurpleThemeSelected=false;
 
-
-  switchTheme(event:any) {
-    let theme =event.value ;
-    // localStorage.setItem('userId', 'a');
-    localStorage.setItem('currentTheme', theme);
+  ngOnInit(): void {
     let myTheme = localStorage.getItem('currentTheme');
-    console.log('=======myTheme', myTheme)
-
-    if(event.value==='pink' && myTheme === 'pink'){
+    if( myTheme === 'pink'){
       this.pinkThemeSelected =true ;
       this.purpleThemeSelected =false ;
       this.deepPurpleThemeSelected=false;
     }
-    if(event.value==='purple' && myTheme === 'purple'){
+    if( myTheme === 'purple'){
       this.purpleThemeSelected =true ;
       this.pinkThemeSelected =false ;
       this.deepPurpleThemeSelected=false;
     }
 
-    if(event.value==='deepPurple' && myTheme === 'deepPurple'){
+    if( myTheme === 'deepPurple'){
+      this.deepPurpleThemeSelected=true;
+      this.purpleThemeSelected =false ;
+      this.pinkThemeSelected =false ;
+    }
+
+
+  }
+
+  switchTheme(event:any) {
+    let theme =event.value ;
+    localStorage.setItem('currentTheme', theme);
+
+    if(event.value==='pink' ){
+      this.pinkThemeSelected =true ;
+      this.purpleThemeSelected =false ;
+      this.deepPurpleThemeSelected=false;
+    }
+    if(event.value==='purple' ){
+      this.purpleThemeSelected =true ;
+      this.pinkThemeSelected =false ;
+      this.deepPurpleThemeSelected=false;
+    }
+
+    if(event.value==='deepPurple' ){
       this.deepPurpleThemeSelected=true;
       this.purpleThemeSelected =false ;
       this.pinkThemeSelected =false ;

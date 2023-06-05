@@ -13,31 +13,28 @@ export class AppComponent implements OnInit{
   deepPurpleThemeSelected=false;
 
   ngOnInit(): void {
+    let currentTheme = localStorage.getItem('currentTheme');
+    console.log('====currentTheme', currentTheme)
 
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+    if(!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches){
       console.log('dark')
+      this.pinkThemeSelected =true ;
+      this.deepPurpleThemeSelected=false;
     }else{
       console.log('light')
-    }
-
-    let myTheme = localStorage.getItem('currentTheme');
-    if( myTheme === 'pink'){
-      this.pinkThemeSelected =true ;
-      this.purpleThemeSelected =false ;
-      this.deepPurpleThemeSelected=false;
-    }
-    if( myTheme === 'purple'){
-      this.purpleThemeSelected =true ;
-      this.pinkThemeSelected =false ;
-      this.deepPurpleThemeSelected=false;
-    }
-
-    if( myTheme === 'deepPurple'){
       this.deepPurpleThemeSelected=true;
-      this.purpleThemeSelected =false ;
       this.pinkThemeSelected =false ;
     }
 
+    if( currentTheme === 'pink'){
+      this.pinkThemeSelected =true ;
+      this.deepPurpleThemeSelected=false;
+    }
+
+    if( currentTheme === 'deepPurple'){
+      this.deepPurpleThemeSelected=true;
+      this.pinkThemeSelected =false ;
+    }
 
   }
 
@@ -45,23 +42,25 @@ export class AppComponent implements OnInit{
     let theme =event.value ;
     localStorage.setItem('currentTheme', theme);
 
+    if(event.value==='system' ){
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        this.pinkThemeSelected =true ;
+        this.deepPurpleThemeSelected=false;
+      }else{
+        this.deepPurpleThemeSelected=true;
+        this.pinkThemeSelected =false ;
+      }
+      }
+
     if(event.value==='pink' ){
       this.pinkThemeSelected =true ;
-      this.purpleThemeSelected =false ;
-      this.deepPurpleThemeSelected=false;
-    }
-    if(event.value==='purple' ){
-      this.purpleThemeSelected =true ;
-      this.pinkThemeSelected =false ;
       this.deepPurpleThemeSelected=false;
     }
 
     if(event.value==='deepPurple' ){
       this.deepPurpleThemeSelected=true;
-      this.purpleThemeSelected =false ;
       this.pinkThemeSelected =false ;
     }
-
 
   }
 }

@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'theme-app';
-  defaultThemeSelected=true;
+
+  defaultThemeSelected=false;
   pinkThemeSelected =false ;
-  purpleThemeSelected=false;
   deepPurpleThemeSelected=false;
 
 
@@ -45,6 +45,7 @@ export class AppComponent implements OnInit{
     localStorage.setItem('currentTheme', theme);
 
     if(event ==='system' ){
+
       if(window.matchMedia('(prefers-color-scheme: dark)').matches){
         this.pinkThemeSelected =true ;
         this.deepPurpleThemeSelected=false;

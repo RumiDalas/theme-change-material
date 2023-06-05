@@ -11,8 +11,7 @@ export class AppComponent implements OnInit{
   pinkThemeSelected =false ;
   purpleThemeSelected=false;
   deepPurpleThemeSelected=false;
-  expression1=true;
-  expression2=false;
+
 
   ngOnInit(): void {
     let currentTheme = localStorage.getItem('currentTheme');
@@ -28,12 +27,12 @@ export class AppComponent implements OnInit{
       this.pinkThemeSelected =false ;
     }
 
-    if( currentTheme === 'pink'){
+    if( currentTheme === 'dark'){
       this.pinkThemeSelected =true ;
       this.deepPurpleThemeSelected=false;
     }
 
-    if( currentTheme === 'deepPurple'){
+    if( currentTheme === 'light'){
       this.deepPurpleThemeSelected=true;
       this.pinkThemeSelected =false ;
     }
@@ -41,12 +40,11 @@ export class AppComponent implements OnInit{
   }
 
   switchTheme(event:any) {
-    let theme =event.value ;
+    console.log( event)
+    let theme =event;
     localStorage.setItem('currentTheme', theme);
-    this.expression1=false;
-    this.expression2=true;
 
-    if(event.value==='system' ){
+    if(event ==='system' ){
       if(window.matchMedia('(prefers-color-scheme: dark)').matches){
         this.pinkThemeSelected =true ;
         this.deepPurpleThemeSelected=false;
@@ -56,12 +54,12 @@ export class AppComponent implements OnInit{
       }
       }
 
-    if(event.value==='pink' ){
+    if(event ==='dark' ){
       this.pinkThemeSelected =true ;
       this.deepPurpleThemeSelected=false;
     }
 
-    if(event.value==='deepPurple' ){
+    if(event ==='light' ){
       this.deepPurpleThemeSelected=true;
       this.pinkThemeSelected =false ;
     }

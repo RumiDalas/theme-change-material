@@ -13,6 +13,13 @@ export class AppComponent implements OnInit{
   deepPurpleThemeSelected=false;
 
   ngOnInit(): void {
+
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      console.log('dark')
+    }else{
+      console.log('light')
+    }
+
     let myTheme = localStorage.getItem('currentTheme');
     if( myTheme === 'pink'){
       this.pinkThemeSelected =true ;

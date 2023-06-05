@@ -11,6 +11,8 @@ export class AppComponent implements OnInit{
   pinkThemeSelected =false ;
   purpleThemeSelected=false;
   deepPurpleThemeSelected=false;
+  expression1=true;
+  expression2=false;
 
   ngOnInit(): void {
     let currentTheme = localStorage.getItem('currentTheme');
@@ -41,6 +43,8 @@ export class AppComponent implements OnInit{
   switchTheme(event:any) {
     let theme =event.value ;
     localStorage.setItem('currentTheme', theme);
+    this.expression1=false;
+    this.expression2=true;
 
     if(event.value==='system' ){
       if(window.matchMedia('(prefers-color-scheme: dark)').matches){
